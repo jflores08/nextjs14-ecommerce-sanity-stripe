@@ -1,10 +1,14 @@
+// Import Next Components
 import Image from "next/image";
+
+// Import local components
+import Hero from "./components/Hero";
 
 export default function Home() {
   return (
     <main>
-      <div>
-        <h1>hello from the main page</h1>
+      <div className="bg-white pb-6 sm:pb-8 lg:pb-12">
+        <Hero />
       </div>
     </main>
   );
