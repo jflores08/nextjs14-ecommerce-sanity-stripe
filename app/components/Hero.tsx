@@ -1,7 +1,10 @@
 // Import next.js components
 import Image from "next/image";
-import { client, urlFor } from "../lib/sanity";
 import Link from "next/link";
+
+// Import sanity components
+import { client, urlFor } from "../lib/sanity";
+
 
 // function to fetch HeroImage data from Sanity and assign it to the variable data
 async function getData() {
