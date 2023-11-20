@@ -26,8 +26,8 @@ async function getData() {
           "imageUrl": images[0].asset->url
       }`;
 
-  const data = await client.fetch(query);
-  return data;
+  const fourNewestData = await client.fetch(query);
+  return fourNewestData;
 }
 
 // Start of tsx
@@ -35,7 +35,7 @@ export default async function Newest() {
   {
     /* assign the data of the 4 newest products to the variable data inside the Newest component */
   }
-  const data: simplifiedProduct[] = await getData();
+  const fourNewestData: simplifiedProduct[] = await getData();
   return (
     //Setting the background of the component white
     <div className="bg-white">
@@ -61,7 +61,7 @@ export default async function Newest() {
 
         {/* flex box for 4 newest products */}
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {data.map((product) => (
+          {fourNewestData.map((product) => (
             // element for each product
             <div key={product._id} className="group relative">
               {/* box for product picture */}
