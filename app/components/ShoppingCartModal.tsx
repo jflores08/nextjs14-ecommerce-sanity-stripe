@@ -64,6 +64,7 @@ export default function ShoppingCartModal() {
                         <div className="flex flex-1 items-end justify-between text-sm">
                           {/* Product quanity in cart */}
                           <p className="text-gray-500">QTY: {entry.quantity}</p>
+                          {/* add quanity amount edit */}
 
                           {/* Product Remove button */}
                           <div className="flex">
