@@ -92,6 +92,7 @@ export default async function ProductPage({
                 name={individualProductData.name}
                 price={individualProductData.price}
                 key={individualProductData._id}
+                price_id={individualProductData._id}
               />
               <Button variant={"secondary"}>Checkout Now</Button>
             </div>

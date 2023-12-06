@@ -9,6 +9,7 @@ export interface ProductCart {
   price: number;
   currency: string;
   image: any;
+  price_id: string;
 }
 
 export default function AddToCart({
@@ -17,6 +18,7 @@ export default function AddToCart({
   image,
   name,
   price,
+  price_id,
 }: ProductCart) {
   const { addItem, handleCartClick } = useShoppingCart();
 
@@ -26,7 +28,7 @@ export default function AddToCart({
     price: price,
     currency: currency,
     image: urlFor(image).url(),
-    id: "replaceMe!!",
+    price_id: price_id,
   };
   return (
     <Button

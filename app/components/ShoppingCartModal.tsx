@@ -12,6 +12,10 @@ import Image from "next/image";
 // Import Stripe components
 import { useShoppingCart } from "use-shopping-cart";
 
+// Import local components
+import UpCarrot from "../components/svg/UpCarrot";
+import DownCarrot from "../components/svg/DownCarrot";
+
 export default function ShoppingCartModal() {
   const {
     cartCount,
@@ -21,6 +25,7 @@ export default function ShoppingCartModal() {
     removeItem,
     totalPrice,
   } = useShoppingCart();
+
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
       <SheetContent className="sm:max-w-lg w-[90dvw]">
@@ -53,7 +58,9 @@ export default function ShoppingCartModal() {
                         <div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <h3>{entry.name}</h3>
-                            <p className="ml-4">${entry.price}</p>
+                            <p className="ml-4">
+                              ${entry.price * entry.quantity}
+                            </p>
                           </div>
                           <p className="mt-1 text-sm text-gray-500 line-clamp-2">
                             {entry.description}
@@ -63,8 +70,17 @@ export default function ShoppingCartModal() {
                         {/* Product quanity in cart  and Remove button*/}
                         <div className="flex flex-1 items-end justify-between text-sm">
                           {/* Product quanity in cart */}
-                          <p className="text-gray-500">QTY: {entry.quantity}</p>
-                          {/* add quanity amount edit */}
+                          <div className="flex flex-row align-middle">
+                            <p className="text-gray-500">
+                              QTY: {entry.quantity}
+                            </p>
+                            <div className="flex flex-col">
+                              <UpCarrot />
+                              <DownCarrot />
+                            </div>
+                          </div>
+                          {/* add quant
+                          ity amount edit */}
 
                           {/* Product Remove button */}
                           <div className="flex">
@@ -96,7 +112,14 @@ export default function ShoppingCartModal() {
             </p>
             {/* Checkout button */}
             <div className="mt-6">
-              <Button className="w-full">Checkout</Button>
+              <Button
+                className="w-full"
+                onClick={() => {
+                  console.log("checkout");
+                }}
+              >
+                Checkout
+              </Button>
             </div>
 
             {/* Continue Shopping button */}
