@@ -26,7 +26,6 @@ async function getData(slug: string) {
       }`;
 
   const individualProductData = await client.fetch(query);
-  console.log(individualProductData.images);
   return individualProductData;
 }
 

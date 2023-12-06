@@ -22,6 +22,8 @@ export default function ShoppingCartModal() {
     shouldDisplayCart,
     handleCartClick,
     cartDetails,
+    incrementItem,
+    decrementItem,
     removeItem,
     totalPrice,
   } = useShoppingCart();
@@ -68,15 +70,25 @@ export default function ShoppingCartModal() {
                         </div>
 
                         {/* Product quanity in cart  and Remove button*/}
-                        <div className="flex flex-1 items-end justify-between text-sm">
+                        <div className="flex flex-1 items-end justify-between align-top text-sm">
                           {/* Product quanity in cart */}
-                          <div className="flex flex-row align-middle">
-                            <p className="text-gray-500">
+                          <div className="flex flex-row justify-center align-middle">
+                            <p className="text-gray-500 pt-0.5">
                               QTY: {entry.quantity}
                             </p>
-                            <div className="flex flex-col">
-                              <UpCarrot />
-                              <DownCarrot />
+                            <div className="flex flex-col  ">
+                              <button
+                                className="center"
+                                onClick={() => incrementItem(entry.id)}
+                              >
+                                <UpCarrot />
+                              </button>
+                              <button
+                                className=""
+                                onClick={() => decrementItem(entry.id)}
+                              >
+                                <DownCarrot />
+                              </button>
                             </div>
                           </div>
                           {/* add quant
