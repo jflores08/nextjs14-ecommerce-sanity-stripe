@@ -1,21 +1,25 @@
 "use client";
 import { Fragment } from "react";
 import { Button } from "@/components/ui/button";
-// Import shadcn UI components
+
+// Import local UI components
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+
+// Import next components
 import Image from "next/image";
 
 // Import Stripe components
 import { useShoppingCart } from "use-shopping-cart";
 
 // Import local components
-import UpCarrot from "../components/svg/UpCarrot";
-import DownCarrot from "../components/svg/DownCarrot";
+import UpCarrot from "./svg/UpCarrot";
+import DownCarrot from "./svg/DownCarrot";
+import CheckoutButton from "./CheckoutButton";
 
 export default function ShoppingCartModal() {
   const {
@@ -124,15 +128,7 @@ export default function ShoppingCartModal() {
             </p>
             {/* Checkout button */}
             <div className="mt-6">
-              <Button
-                className="w-full"
-                onClick={() => {
-                  console.log("checkout");
-                  console.log(cartDetails);
-                }}
-              >
-                Checkout
-              </Button>
+              <CheckoutButton />
             </div>
 
             {/* Continue Shopping button */}
