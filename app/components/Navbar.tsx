@@ -25,7 +25,7 @@ export default function Navbar() {
     /* create pathname variable with current url value using usePathname Hook */
   }
   const pathname = usePathname();
-  const { handleCartClick } = useShoppingCart();
+  const { handleCartClick, cartCount } = useShoppingCart();
   return (
     <header className="mb-8 border-b">
       {/* Navbar Flex container */}
@@ -67,9 +67,16 @@ export default function Navbar() {
           <Button
             variant={"outline"}
             onClick={() => handleCartClick()}
-            className="flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
+            className="flex flex-col justify-center gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
           >
-            <ShoppingBag />
+            <div className="w-10 h-10 ml-4 mb-2 md:mb-1 md:w-15 md:h-15">
+              <div className="rounded-full z-10 flex justify-center items-center bg-emerald-500 text-xs md:text-sm text-white w-5 h-5 md:w-5 md:h-5 relative top-1 ">
+                {cartCount}
+              </div>
+              <div className="relative z-0">
+                <ShoppingBag />
+              </div>
+            </div>
             <span className="hidden text-xs font-semibold text-gray-500 sm:block">
               Cart
             </span>

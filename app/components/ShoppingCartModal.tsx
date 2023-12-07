@@ -1,4 +1,5 @@
 "use client";
+import { Fragment } from "react";
 import { Button } from "@/components/ui/button";
 // Import shadcn UI components
 import {
@@ -53,7 +54,6 @@ export default function ShoppingCartModal() {
                           height={100}
                         />
                       </div>
-
                       {/* Product Info and Remove button */}
                       <div className="ml-4 flex flex-1 flex-col">
                         {/* Product Info */}
@@ -128,6 +128,7 @@ export default function ShoppingCartModal() {
                 className="w-full"
                 onClick={() => {
                   console.log("checkout");
+                  console.log(cartDetails);
                 }}
               >
                 Checkout
