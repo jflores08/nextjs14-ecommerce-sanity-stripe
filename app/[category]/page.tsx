@@ -6,7 +6,22 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function getCategoryData(category: string) {
-  const query = `*[_type == "product" && category -> name == "${category}"]{
+  if (category == "all") {
+    const query = `*[_type =="product"] | order(_createdAt desc) {
+      _id,
+        price,
+        name,
+        "slug": slug.current,
+        "categoryName": category->name,
+        "imageUrl": images[0].asset->url
+    }`;
+
+    const categoryDataFromServer = await client.fetch(query);
+    console.log(category);
+
+    return categoryDataFromServer;
+  } else {
+    const query = `*[_type == "product" && category -> name == "${category}"]{
         _id,
           "imageUrl": images[0].asset -> url,
           price,
@@ -14,8 +29,12 @@ async function getCategoryData(category: string) {
           "slug": slug.current,
           "categoryName": category ->name
       }`;
-  const categoryDataFromServer = await client.fetch(query);
-  return categoryDataFromServer;
+
+    const categoryDataFromServer = await client.fetch(query);
+    console.log(category);
+
+    return categoryDataFromServer;
+  }
 }
 export default async function CategoryPage({
   params,
